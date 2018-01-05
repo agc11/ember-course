@@ -7,6 +7,18 @@ module.exports = function(environment) {
     environment,
     rootURL: '/',
     locationType: 'auto',
+    firebase: {
+      apiKey: 'AIzaSyAkFDYIUqf43ypQYZodVaUnu9JDrr3JdOc',
+      authDomain: 'ibrary-ember-17cb5.firebaseapp.com',
+      databaseURL: 'https://library-ember-17cb5.firebaseio.com',
+      storageBucket: 'library-ember-17cb5.appspot.com',
+     },
+     // if using ember-cli-content-security-policy
+     contentSecurityPolicy: {
+       'script-src': "'self' 'unsafe-eval' apis.google.com",
+       'frame-src': "'self' https://*.firebaseapp.com",
+       'connect-src': "'self' wss://*.firebaseio.com https://*.googleapis.com"
+     },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -26,10 +38,10 @@ module.exports = function(environment) {
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
-    // ENV.APP.LOG_ACTIVE_GENERATION = true;
-    // ENV.APP.LOG_TRANSITIONS = true;
-    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
-    // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.APP.LOG_ACTIVE_GENERATION = true;
+    ENV.APP.LOG_TRANSITIONS = true;
+    ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
+    ENV.APP.LOG_VIEW_LOOKUPS = true;
   }
 
   if (environment === 'test') {
@@ -44,7 +56,9 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    // here you can enable a production-specific feature
+    ENV['ember-faker'] = {
+      enabled: true
+    }
   }
 
   return ENV;
